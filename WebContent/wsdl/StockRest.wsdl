@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://wNikita" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://wNikita" xmlns:intf="http://wNikita" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://wNikita" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="checkDb">
+    <complexType/>
+   </element>
+   <element name="checkDbResponse">
+    <complexType>
+     <sequence>
+      <element name="checkDbReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getRest">
+    <complexType/>
+   </element>
+   <element name="getRestResponse">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="getRestReturn" type="impl:GoodPosition"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="Good">
+    <sequence>
+     <element name="f_id" type="xsd:int"/>
+     <element name="f_name" nillable="true" type="xsd:string"/>
+     <element name="f_article" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="GoodPosition">
+    <sequence>
+     <element name="good" nillable="true" type="impl:Good"/>
+     <element name="quan" type="xsd:int"/>
+     <element name="price" type="xsd:float"/>
+    </sequence>
+   </complexType>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="getRestResponse">
+
+      <wsdl:part element="impl:getRestResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getRestRequest">
+
+      <wsdl:part element="impl:getRest" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="checkDbResponse">
+
+      <wsdl:part element="impl:checkDbResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="checkDbRequest">
+
+      <wsdl:part element="impl:checkDb" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="StockRest">
+
+      <wsdl:operation name="checkDb">
+
+         <wsdl:input message="impl:checkDbRequest" name="checkDbRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:checkDbResponse" name="checkDbResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getRest">
+
+         <wsdl:input message="impl:getRestRequest" name="getRestRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getRestResponse" name="getRestResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="StockRestSoapBinding" type="impl:StockRest">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="checkDb">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="checkDbRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="checkDbResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getRest">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getRestRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getRestResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="StockRestService">
+
+      <wsdl:port binding="impl:StockRestSoapBinding" name="StockRest">
+
+         <wsdlsoap:address location="http://localhost:8080/Italina_tomcat/services/StockRest"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

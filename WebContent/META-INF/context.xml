@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context>
+	<Resource name="jdbc/nbase" type="javax.sql.DataSource" database="10.8.0.1/3050:nbase_develop" password="951" driverClassName="org.firebirdsql.jdbc.FBDriver" url="jdbc:firebirdsql:10.8.0.1/3050:nbase?lc_ctype=WIN1251" username="SYSDBA" lc_ctype="WIN1251"></Resource></Context>

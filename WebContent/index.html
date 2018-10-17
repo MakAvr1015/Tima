@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Программа Егор</title>
+<link rel="stylesheet"
+	href="https://cdn.metroui.org.ua/v4/css/metro.min.css">
+<link rel="stylesheet"
+	href="https://cdn.metroui.org.ua/v4/css/metro-colors.min.css">
+<link rel="stylesheet"
+	href="https://cdn.metroui.org.ua/v4/css/metro-rtl.min.css">
+<link rel="stylesheet"
+	href="https://cdn.metroui.org.ua/v4/css/metro-icons.min.css">
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://cdn.metroui.org.ua/v4/js/metro.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+// 		$("body").on("click", "#refreshDoc", function() {
+// 			$('#docOutList').dataTable({
+// 				'retrieve' : true,
+// 				'paging' : false,
+// 				'bProcessing' : false,
+// 				'bServerSide' : false,
+// 				'sAjaxSource' : './DocList',
+// 				'bJQueryUI' : true,
+// 				'aoColumns' : [ {
+// 					mData : 'f_id'
+// 				}, {
+// 					mData : 'f_number'
+// 				}, {
+// 					mData : 'f_date'
+// 				}, {
+// 					mData : 'f_sender_name'
+// 				}, {
+// 					mData : 'f_recip_name'
+// 				}, {
+// 					mData : 'f_sum'
+// 				}, {
+// 					mData : 'f_state_name'
+// 				}, ]
+// 			});
+
+// 		});
+		//		$("#OutJournal").on("click",);
+		$("#OutJournal").click(function() {
+			if ($('.docOutJournal').length > 0) {
+				$('.docOutJournal').click();
+			} else {
+
+				var v_journal = $("<li></li>");
+				var v_tab_id = $("#tabContainer > .docContainer").length + 1;
+				//			var v_div = $("<div>").appendTo(v_journal);
+				var v_href = $("<a></a>", {
+					"href" : "#tab" + v_tab_id,
+					"text" : "Журнал расходных документов"
+				}).appendTo(v_journal);
+				//			var v_clsButton= $("<button>",{"text":"close","class":"tool-button"}).appendTo(v_div);
+				v_journal.addClass("docContainer");
+				v_journal.addClass("docOutJournal");
+				var v_content = $("<div></div>", {
+					"id" : "tab" + v_tab_id,
+
+				});
+				v_content.load("html/docList.html");
+
+				$("#tabContainer").append(v_journal);
+				$("#tabContent").append(v_content);
+				$("#tabContainer").reload();
+			}
+			//    	 $("#tabContainer").append(v_journal);
+		});
+	});
+</script>
+<!-- 
+<link rel="stylesheet"
+	href="jsLib/Metro-UI-CSS-master/build/css/metro.css">
+<script src="jsLib/jquery-3.2.1.js"></script>
+<script src="jsLib/Metro-UI-CSS-master/build/js/metro.js"></script>
+<script>
+	$(function() {
+		$("#tabs").tabs();
+	});
+
+	$("button").button();
+</script> -->
+</head>
+<body>
+
+	<nav data-role="ribbonmenu">
+		<ul class="tabs-holder">
+			<li><a href="#mainContent">Работа</a></li>
+		</ul>
+		<div class="content-holder">
+			<div class="section" id="mainContent">
+				<div class="group">
+					<div class="ribbon-split-button">
+						<button class="ribbon-main">
+							<span class="icon"> <span
+								class="mif-shopping-basket fg-blue"> </span>
+							</span>
+
+						</button>
+						<span class="ribbon-split dropdown-toggle">Продажи</span>
+						<ul class="ribbon-dropdown" data-role="dropdown"
+							data-duration="100">
+							<li>
+								<!-- <a href="docList.html"> --> <span id="OutJournal">Реализация</span>
+							</li>
+							<li><a href="">Возвраты</a></li>
+						</ul>
+
+					</div>
+					<div class="ribbon-split-button">
+						<button class="ribbon-main">
+							<span class="icon"> <span
+								class="mif-shopping-basket2 fg-blue"> </span>
+							</span>
+
+						</button>
+						<span class="ribbon-split dropdown-toggle">Закупки</span>
+						<ul class="ribbon-dropdown" data-role="dropdown"
+							data-duration="100">
+							<li><a href="">Ценообразование</a></li>
+							<li><a href="">Приходы</a></li>
+							<li><a href="">Возвраты поставщикам</a></li>
+						</ul>
+
+					</div>
+					<div class="ribbon-split-button">
+						<button class="ribbon-main">
+							<span class="icon"> <span class="mif-dollars fg-blue">
+							</span>
+							</span>
+
+						</button>
+
+						<span class="ribbon-split dropdown-toggle">Платежные
+							операции</span>
+						<ul class="ribbon-dropdown" data-role="dropdown"
+							data-duration="100">
+							<li><a href="">Входящие платежи</a></li>
+							<li><a href="">Исходящие платежи</a></li>
+						</ul>
+
+					</div>
+					<div class="ribbon-split-button">
+						<button class="ribbon-main">
+							<span class="icon"> <span class="mif-cabinet fg-blue">
+							</span>
+							</span>
+
+						</button>
+						<span class="ribbon-split dropdown-toggle">Складские
+							операции</span>
+
+						<ul class="ribbon-dropdown" data-role="dropdown"
+							data-duration="100">
+							<li><a href="">Инвентаризация</a></li>
+							<li><a href="">Заготовки</a></li>
+							<li><a href="">Перемещения между складами</a></li>
+							<li><a href="">Списания</a></li>
+							<li><a href="">Оприходование излишков</a></li>
+						</ul>
+
+					</div>
+					<div class="ribbon-split-button">
+						<button class="ribbon-main">
+							<span class="icon"> <span class="mif-home fg-blue">
+							</span>
+							</span>
+						</button>
+						<span class="ribbon-split dropdown-toggle">Хоз.деятельность</span>
+						<ul class="ribbon-dropdown" data-role="dropdown"
+							data-duration="100">
+							<li><a href="">Хоз.документы(приход)</a></li>
+							<li><a href="">Хоз.документы(расход)</a></li>
+						</ul>
+
+					</div>
+					<span class="title">Документы</span>
+				</div>
+				<div class="group">
+					<div class="ribbon-split-button">
+						<button class="ribbon-main">
+							<span class="icon"> <span class="mif-organization fg-blue">
+							</span>
+							</span>
+						</button>
+						<span class="ribbon-split">Контрагенты</span>
+					</div>
+					<div class="ribbon-split-button">
+						<button class="ribbon-main">
+							<span class="icon"> <span class="mif-barcode fg-blue">
+							</span>
+							</span>
+						</button>
+						<span class="ribbon-split">Номенклатура</span>
+					</div>
+
+					<div class="ribbon-split-button">
+						<button class="ribbon-main">
+							<span class="icon"> <span class="mif-calculator2 fg-blue">
+							</span>
+							</span>
+						</button>
+						<span class="ribbon-split">Цены</span>
+					</div>
+					<span class="title">Справочники</span>
+				</div>
+				<div class="group">
+					<div class="ribbon-split-button">
+						<button class="ribbon-main">
+							<span class="icon"> <span class="mif-books fg-blue">
+							</span>
+							</span>
+						</button>
+						<span class="ribbon-split">Запасы</span>
+					</div>
+					<div class="ribbon-split-button">
+						<button class="ribbon-main">
+							<span class="icon"> <span class="mif-bookmarks fg-blue">
+							</span>
+							</span>
+						</button>
+						<span class="ribbon-split">Буфер</span>
+					</div>
+					<div class="ribbon-split-button">
+						<button class="ribbon-main">
+							<span class="icon"> <span class="mif-files-empty fg-blue">
+							</span>
+							</span>
+						</button>
+						<span class="ribbon-split">Отчеты</span>
+					</div>
+
+					<span class="title">Инструменты</span>
+				</div>
+
+			</div>
+		</div>
+	</nav>
+
+	<ul data-role="tabs" class="tabs-expand-md" id="tabContainer"
+		data-on-tab="beforeTab">
+
+	</ul>
+
+	<div class="border bd-default no-border-top p-2" id="tabContent">
+	</div>
+	<!--
+	<div class="tile-group size-3">
+		<span class="tile-group-title">Начало</span>
+
+		<div class="tile-container">
+
+			<div class="tile-wide bg-steel fg-white" data-role="tile"
+				onclick="document.location.href='docList.html'">
+				<div class="tile-content" id="weather_bg"
+					style="background: top left no-repeat; background-size: cover">
+				</div>
+				<span class="tile-label">Расходы</span>
+			</div>
+
+		</div>
+	</div>
+
+
+	<div class="container"></div>
+	Hello
+	<a href="
+,"> call servlet </a>-->
+
+
+</body>
+</html>

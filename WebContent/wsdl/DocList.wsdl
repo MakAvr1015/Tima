@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://wNikita" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://wNikita" xmlns:intf="http://wNikita" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://wNikita" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="getList">
+    <complexType>
+     <sequence>
+      <element name="docType" type="xsd:int"/>
+      <element name="date_beg" type="xsd:dateTime"/>
+      <element name="date_end" type="xsd:dateTime"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getListResponse">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="getListReturn" type="impl:MoveDocument"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="Partner">
+    <sequence>
+     <element name="f_id" type="xsd:int"/>
+     <element name="f_name" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="MoveDocument">
+    <sequence>
+     <element name="f_id" type="xsd:int"/>
+     <element name="f_number" nillable="true" type="xsd:string"/>
+     <element name="f_date" nillable="true" type="xsd:dateTime"/>
+     <element name="f_state" type="xsd:int"/>
+     <element name="f_state_name" nillable="true" type="xsd:string"/>
+     <element name="f_sender" nillable="true" type="impl:Partner"/>
+     <element name="f_recipient" nillable="true" type="impl:Partner"/>
+    </sequence>
+   </complexType>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="getListRequest">
+
+      <wsdl:part element="impl:getList" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getListResponse">
+
+      <wsdl:part element="impl:getListResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="DocList">
+
+      <wsdl:operation name="getList">
+
+         <wsdl:input message="impl:getListRequest" name="getListRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getListResponse" name="getListResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="DocListSoapBinding" type="impl:DocList">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="getList">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getListRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getListResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="DocListService">
+
+      <wsdl:port binding="impl:DocListSoapBinding" name="DocList">
+
+         <wsdlsoap:address location="http://localhost:8080/Italina_tomcat/services/DocList"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

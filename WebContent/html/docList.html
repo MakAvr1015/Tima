@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Журнал документов</title>
+
+<!-- link rel="stylesheet"
+	href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" -->
+<link rel="stylesheet" href="./jsLib/DataTables/datatables.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="./jsLib/DataTables/datatables.js"></script>
+<!-- <script
+	src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script> -->
+<script src="./resource/js/getOutList.js"></script>
+
+
+</head>
+<body>
+	<ul class="t-menu open horizontal">
+		<li><a href="#"><span class="mif-news icon fg-blue"></span></a></li>
+		<li><a href="#"><span class="mif-pencil icon fg-blue"></span></a></li>
+		<li id="refreshDoc"><a href="#"><span
+				class="mif-loop2 icon fg-blue"></span></a></li>
+		<li><a href="#"><span class="mif-printer icon fg-blue"></span></a></li>
+	</ul>
+	<table id="docOutList" class="display jqueryDataTable compact"
+		style="width: 100%">
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>Номер</th>
+				<th>Дата</th>
+				<th>Склад</th>
+				<th>Клиент</th>
+				<th>Сумма</th>
+				<th>Статус</th>
+			</tr>
+		</thead>
+		<tfoot>
+			<tr>
+				<th>ID</th>
+				<th>Номер</th>
+				<th>Дата</th>
+				<th>Склад</th>
+				<th>Клиент</th>
+				<th>Сумма</th>
+				<th>Статус</th>
+			</tr>
+		</tfoot>
+	</table>
+
+
+
+
+</body>
+</html>

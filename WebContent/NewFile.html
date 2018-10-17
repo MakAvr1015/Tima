@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Tima VUE</title>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script type="text/javascript" src="https://unpkg.com/babel-polyfill/dist/polyfill.min.js"></script>
+<!-- https://unpkg.com/vue/dist/vue.js -->
+<script src="https://unpkg.com/vuetify/dist/vuetify.min.js"></script>
+<script src="resource/js/VueComponents.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/vuetify/dist/vuetify.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons">
+
+</head>
+<body>
+<div id="app">
+  <v-app id="inspire">
+    <v-navigation-drawer permanent>
+      <v-toolbar flat>
+        <v-list>
+          <v-list-tile>
+            <v-list-tile-title class="title">
+              Склад
+            </v-list-tile-title>
+          </v-list-tile>
+        </v-list>
+      </v-toolbar>
+      <v-divider></v-divider>
+      <v-list dense class="pt-0">
+        <v-list-tile v-for="item in navigator" :key="item.title" @click="item.method">
+          <v-list-tile-action>
+            <v-icon>{{ item.icon }}</v-icon>
+          </v-list-tile-action>
+          <v-list-tile-content>
+            <v-list-tile-title>{{ item.title }}</v-list-tile-title>
+          </v-list-tile-content>
+        </v-list-tile>
+        
+      </v-list>
+    </v-navigation-drawer>
+
+<v-toolbar color="indigo" dark fixed>
+      <v-spacer></v-spacer>
+      <v-toolbar-items >
+        <v-btn flat v-for="item in menuitems">{{item.caption}}</v-btn>
+      </v-toolbar-items>
+    </v-toolbar>
+    <v-data-table
+      :headers="headers"
+      :items="desserts"
+      hide-actions
+      class="elevation-1" 
+    >
+      <template slot="items" slot-scope="props">
+        <td>{{ props.item.name }}</td>
+        <td class="text-xs-right">{{ props.item.calories }}</td>
+        <td class="text-xs-right">{{ props.item.fat }}</td>
+        <td class="text-xs-right">{{ props.item.carbs }}</td>
+        <td class="text-xs-right">{{ props.item.protein }}</td>
+        <td class="text-xs-right">{{ props.item.iron }}</td>
+      </template>
+    </v-data-table> 
+       
+  </v-app>
+</div>
+
+	<script src="resource/js/VueHead.js"></script>  		
+
+
+</body>
+</html>

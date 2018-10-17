@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- Use this file to deploy some handlers/chains and services      --><!-- Two ways to do this:                                           --><!--   java org.apache.axis.client.AdminClient deploy.wsdd          --><!--      after the axis server is running                          --><!-- or                                                             --><!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   --><!--      from the same directory that the Axis engine runs         --><deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from DocListService WSDL service -->
+
+  <service name="DocList" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://wNikita"/>
+      <parameter name="wsdlServiceElement" value="DocListService"/>
+      <parameter name="schemaQualified" value="http://wNikita"/>
+      <parameter name="wsdlServicePort" value="DocList"/>
+      <parameter name="className" value="wNikita.DocList"/>
+      <parameter name="wsdlPortType" value="DocList"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation xmlns:operNS="http://wNikita" xmlns:retNS="http://wNikita" xmlns:rtns="http://wNikita" name="getList" qname="operNS:getList" returnQName="retNS:getListReturn" returnType="rtns:MoveDocument" soapAction="">
+        <parameter xmlns:pns="http://wNikita" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:docType" type="tns:int"/>
+        <parameter xmlns:pns="http://wNikita" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:date_beg" type="tns:dateTime"/>
+        <parameter xmlns:pns="http://wNikita" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:date_end" type="tns:dateTime"/>
+      </operation>
+      <parameter name="allowedMethods" value="getList"/>
+
+      <typeMapping xmlns:ns="http://wNikita" qname="ns:MoveDocument" type="java:wNikita.MoveDocument" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://wNikita" qname="ns:Partner" type="java:wNikita.Partner" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+  </service>
+</deployment>

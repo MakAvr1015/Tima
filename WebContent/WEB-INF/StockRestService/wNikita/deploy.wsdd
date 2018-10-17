@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- Use this file to deploy some handlers/chains and services      --><!-- Two ways to do this:                                           --><!--   java org.apache.axis.client.AdminClient deploy.wsdd          --><!--      after the axis server is running                          --><!-- or                                                             --><!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   --><!--      from the same directory that the Axis engine runs         --><deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from StockRestService WSDL service -->
+
+  <service name="StockRest" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://wNikita"/>
+      <parameter name="wsdlServiceElement" value="StockRestService"/>
+      <parameter name="schemaQualified" value="http://wNikita"/>
+      <parameter name="wsdlServicePort" value="StockRest"/>
+      <parameter name="className" value="wNikita.StockRest"/>
+      <parameter name="wsdlPortType" value="StockRest"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation xmlns:operNS="http://wNikita" xmlns:retNS="http://wNikita" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="checkDb" qname="operNS:checkDb" returnQName="retNS:checkDbReturn" returnType="rtns:string" soapAction="">
+      </operation>
+      <operation xmlns:operNS="http://wNikita" xmlns:retNS="http://wNikita" xmlns:rtns="http://wNikita" name="getRest" qname="operNS:getRest" returnQName="retNS:getRestReturn" returnType="rtns:GoodPosition" soapAction="">
+      </operation>
+      <parameter name="allowedMethods" value="checkDb getRest"/>
+
+      <typeMapping xmlns:ns="http://wNikita" qname="ns:GoodPosition" type="java:wNikita.GoodPosition" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://wNikita" qname="ns:Good" type="java:wNikita.Good" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+  </service>
+</deployment>
